@@ -19,6 +19,7 @@ public class Carrinho {
             if (item.getProduto().equals(produto)) {
                 temNoEstoque = true;
                 quantidadeNoEstoque = item.getQuantidade();
+                break;
             }
         }
 
@@ -34,10 +35,12 @@ public class Carrinho {
                     if (quantidadeNoEstoque - (item.getQuantidade() + quantidade) >= 0){
                         itens.add(new ItemCompra(produto, vendedor, quantidade));
                         valido = true;
+                        break;
                     }
                 }else if(quantidadeNoEstoque - quantidade >= 0) {
                     itens.add(new ItemCompra(produto, vendedor, quantidade));
                     valido = true;
+                    break;
                 }
             }
         }

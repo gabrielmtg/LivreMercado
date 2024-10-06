@@ -11,8 +11,8 @@ class Main{
 
         vendedor.adicioneProdutoAoEstoque(paoDeQueijo, 10);
         comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 5);
-        //comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
-        //comprador.removerDoCarrinho(paoDeQueijo);
+        comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
+        comprador.removerDoCarrinho(paoDeQueijo);
         //comprador.adicioneAoCarrinho(coco, vendedor, 4);
 
         for(ItemCompra item : comprador.getCarrinho().getItens()){
