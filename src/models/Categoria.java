@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categoria {
@@ -9,18 +10,34 @@ public class Categoria {
 
     public Categoria(String nome){
         this.nome = nome;
+        produtos = new ArrayList<Produto>();
+        subCategorias = new ArrayList<Categoria>();
     }
 
     public void adicioneproduto(Produto produto){
-        produtos.add(produto);
+        if(!produtos.contains(produto)){
+            produto.setCategoria(this);
+            produtos.add(produto);
+        }
     }
 
-    public void AdicioneSubcategorias(Categoria categoria){
+    public void adicioneSubcategoria(Categoria categoria){
         subCategorias.add(categoria);
     }
 
-    public void removaSubcategoria(Categoria subcategoria){
-        //TODO
+    public void removaSubcategoria(Categoria subcategoria, boolean permanente) throws IllegalArgumentException{
+        if(!subCategorias.contains(subcategoria)){
+            throw new IllegalArgumentException("Categoria nao esta na lista");
+        }
+        if(!permanente){
+            subCategorias.remove(subcategoria);
+        }else{
+            List<Produto> produtosSubcategoria = new ArrayList<Produto>(subcategoria.getProdutos());
+            List<Categoria> subcategoriasDaSubcategoria = new ArrayList<Categoria>(subcategoria.getSubCategorias());
+            produtos.addAll(produtosSubcategoria);
+            subCategorias.addAll(subcategoriasDaSubcategoria);
+            subCategorias.remove(subcategoria);
+        }
     }
 
     public String getNome() {
