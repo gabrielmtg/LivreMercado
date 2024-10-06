@@ -11,11 +11,24 @@ class Main{
 
         vendedor.adicioneProdutoAoEstoque(paoDeQueijo, 10);
         comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 5);
-        comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
-        comprador.removerDoCarrinho(paoDeQueijo);
-        //comprador.adicioneAoCarrinho(coco, vendedor, 4);
+        //comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
+        //comprador.removerDoCarrinho(paoDeQueijo);
+        vendedor.adicioneProdutoAoEstoque(coco, 5);
+        comprador.adicioneAoCarrinho(coco, vendedor, 4);
 
         for(ItemCompra item : comprador.getCarrinho().getItens()){
+            System.out.println(item.getProduto().getNome());
+            System.out.println(item.getQuantidade());
+        }
+
+        comprador.efetuarCompra();
+
+        for(ItemCompra item : comprador.getCarrinho().getItens()){
+            System.out.println(item.getProduto().getNome());
+            System.out.println(item.getQuantidade());
+        }
+
+        for(ItemEstoque item : vendedor.getEstoque().getItens()){
             System.out.println(item.getProduto().getNome());
             System.out.println(item.getQuantidade());
         }
