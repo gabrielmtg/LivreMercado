@@ -24,35 +24,24 @@ public class Carrinho {
 
         if (!temNoEstoque) throw new IllegalArgumentException("nao tem no estoque");
 
-        for (ItemCompra item : itens){
-            boolean n = item.getProduto().equals(produto);
-            if (n){
-                if (quantidadeNoEstoque - (item.getQuantidade() + quantidade) >= 0){
+        if (itens.size() == 0) {
+            itens.add(new ItemCompra(produto, vendedor, quantidade));
+            valido = true;
+        }
+        else {
+            for (ItemCompra item : itens){
+                if (item.getProduto().equals(produto)){
+                    if (quantidadeNoEstoque - (item.getQuantidade() + quantidade) >= 0){
+                        itens.add(new ItemCompra(produto, vendedor, quantidade));
+                        valido = true;
+                    }
+                }else if(quantidadeNoEstoque - quantidade >= 0) {
                     itens.add(new ItemCompra(produto, vendedor, quantidade));
                     valido = true;
                 }
-            }else if(quantidadeNoEstoque - quantidade >= 0) {
-                itens.add(new ItemCompra(produto, vendedor, quantidade));
-                valido = true;
             }
         }
 
-        /*for (ItemEstoque item : vendedor.getEstoque().getItens()) {
-            if (item.getProduto().equals(produto)) {
-                if (itens.contains(item)) {
-                    int quantidadeCarrinho = item.getQuantidade();
-                    if (item.getQuantidade() - (quantidadeCarrinho + quantidade) >= 0) {
-                        itens.add(new ItemCompra(produto, vendedor, quantidade));
-                        valido = true;
-                    }
-                } else {
-                    if (item.getQuantidade() - quantidade >= 0) {
-                        itens.add(new ItemCompra(produto, vendedor, quantidade));
-                        valido = true;
-                    }
-                }
-            }
-        }*/
         if (!valido) throw new IllegalArgumentException("numero maior que do estoque");
     }
 
