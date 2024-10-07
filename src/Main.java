@@ -13,11 +13,61 @@ class Main{
         comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 5);
         //comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
         //comprador.removerDoCarrinho(paoDeQueijo);
-        //comprador.adicioneAoCarrinho(coco, vendedor, 4);
+        vendedor.adicioneProdutoAoEstoque(coco, 5);
+        comprador.adicioneAoCarrinho(coco, vendedor, 4);
 
+        // testando adicioneProdutoAoCarrinho()
         for(ItemCompra item : comprador.getCarrinho().getItens()){
             System.out.println(item.getProduto().getNome());
             System.out.println(item.getQuantidade());
         }
+
+        comprador.efetuarCompra();
+
+        //testando efetuarCompra()
+        for(ItemCompra item : comprador.getCarrinho().getItens()){
+            System.out.println(item.getProduto().getNome());
+            System.out.println(item.getQuantidade());
+        }
+
+        for(ItemEstoque item : vendedor.getEstoque().getItens()){
+            System.out.println(item.getProduto().getNome());
+            System.out.println(item.getQuantidade());
+        }
+
+        //testando adicioneProduto() -> classe categoria
+        System.out.println(paoDeQueijo.getCategoria().getNome());
+        Categoria legal = new Categoria("legal");
+        legal.adicioneproduto(paoDeQueijo);
+        System.out.println(paoDeQueijo.getCategoria().getNome());
+        System.out.println();
+
+        //testando removaSubcategoria()
+
+        Categoria abacaxi = new Categoria("abacaxi");
+        Categoria divertidamente = new Categoria("divertidamente");
+        abacaxi.adicioneSubcategoria(divertidamente);
+        abacaxi.adicioneproduto(coco);
+        legal.adicioneSubcategoria(foda);
+        legal.adicioneSubcategoria(abacaxi);
+
+        for (Categoria categoria : legal.getSubCategorias()){
+            System.out.println(categoria.getNome());
+        }
+        for (Produto produto : legal.getProdutos()){
+            System.out.println(produto.getNome());
+        }
+
+        legal.removaSubcategoria(abacaxi, true);
+
+        for (Categoria categoria : legal.getSubCategorias()){
+            System.out.println(categoria.getNome());
+        }
+        for (Produto produto : legal.getProdutos()){
+            System.out.println(produto.getNome());
+        }
+
+        //legal.removaSubcategoria(abacaxi, true);
+
     }
 }

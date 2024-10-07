@@ -23,7 +23,7 @@ public class Estoque {
         }
     }
 
-    public void reduzaQuabtidade(Produto produto, int quantidade) throws IllegalArgumentException{
+    public void reduzaQuantidade(Produto produto, int quantidade) throws IllegalArgumentException{
         for (ItemEstoque item : itens){
             if (item.getProduto().equals(produto)){
                 if (quantidade > item.getQuantidade()) throw new IllegalArgumentException();
