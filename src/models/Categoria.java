@@ -27,7 +27,7 @@ public class Categoria {
 
     public void removaSubcategoria(Categoria subcategoria, boolean permanente) throws IllegalArgumentException{
         if(!subCategorias.contains(subcategoria)){
-            throw new IllegalArgumentException("Categoria nao esta na lista");
+            throw new IllegalArgumentException();
         }
         if(!permanente){
             subCategorias.remove(subcategoria);
