@@ -17,6 +17,7 @@ class Main{
         comprador.adicioneAoCarrinho(coco, vendedor, 4);
 
         // testando adicioneProdutoAoCarrinho()
+        System.out.println("testando adicioneProdutoAoCarrinho()\n");
         for(ItemCompra item : comprador.getCarrinho().getItens()){
             System.out.println(item.getProduto().getNome());
             System.out.println(item.getQuantidade());
@@ -25,6 +26,7 @@ class Main{
         comprador.efetuarCompra();
 
         //testando efetuarCompra()
+        System.out.println("\ntestando efetuarCompra()\n");
         for(ItemCompra item : comprador.getCarrinho().getItens()){
             System.out.println(item.getProduto().getNome());
             System.out.println(item.getQuantidade());
@@ -36,6 +38,8 @@ class Main{
         }
 
         //testando adicioneProduto() -> classe categoria
+
+        System.out.println("\ntestando adicioneProduto() --> classe categoria\n");
         System.out.println(paoDeQueijo.getCategoria().getNome());
         Categoria legal = new Categoria("legal");
         legal.adicioneproduto(paoDeQueijo);
@@ -43,7 +47,7 @@ class Main{
         System.out.println();
 
         //testando removaSubcategoria()
-
+        System.out.println("\ntestando removaSubcategoria()\n");
         Categoria abacaxi = new Categoria("abacaxi");
         Categoria divertidamente = new Categoria("divertidamente");
         abacaxi.adicioneSubcategoria(divertidamente);
@@ -59,6 +63,7 @@ class Main{
         }
 
         legal.removaSubcategoria(abacaxi, true);
+        System.out.println();
 
         for (Categoria categoria : legal.getSubCategorias()){
             System.out.println(categoria.getNome());
