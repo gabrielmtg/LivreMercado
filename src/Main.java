@@ -10,11 +10,11 @@ class Main{
         Produto coco = new Produto("coco", "coco", "coco", 2.50, foda);
 
         vendedor.adicioneProdutoAoEstoque(paoDeQueijo, 10);
-        comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 5);
+        comprador.adicioneProdutoAoCarrinho(paoDeQueijo, vendedor, 5);
         //comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
         //comprador.removerDoCarrinho(paoDeQueijo);
         vendedor.adicioneProdutoAoEstoque(coco, 5);
-        comprador.adicioneAoCarrinho(coco, vendedor, 4);
+        comprador.adicioneProdutoAoCarrinho(coco, vendedor, 4);
 
         // testando adicioneProdutoAoCarrinho()
         System.out.println("testando adicioneProdutoAoCarrinho()\n");
@@ -42,7 +42,7 @@ class Main{
         System.out.println("\ntestando adicioneProduto() --> classe categoria\n");
         System.out.println(paoDeQueijo.getCategoria().getNome());
         Categoria legal = new Categoria("legal");
-        legal.adicioneproduto(paoDeQueijo);
+        legal.adicioneProduto(paoDeQueijo);
         System.out.println(paoDeQueijo.getCategoria().getNome());
         System.out.println();
 
@@ -51,11 +51,11 @@ class Main{
         Categoria abacaxi = new Categoria("abacaxi");
         Categoria divertidamente = new Categoria("divertidamente");
         abacaxi.adicioneSubcategoria(divertidamente);
-        abacaxi.adicioneproduto(coco);
+        abacaxi.adicioneProduto(coco);
         legal.adicioneSubcategoria(foda);
         legal.adicioneSubcategoria(abacaxi);
 
-        for (Categoria categoria : legal.getSubCategorias()){
+        for (Categoria categoria : legal.getSubcategorias()){
             System.out.println(categoria.getNome());
         }
         for (Produto produto : legal.getProdutos()){
@@ -65,7 +65,7 @@ class Main{
         legal.removaSubcategoria(abacaxi, true);
         System.out.println();
 
-        for (Categoria categoria : legal.getSubCategorias()){
+        for (Categoria categoria : legal.getSubcategorias()){
             System.out.println(categoria.getNome());
         }
         for (Produto produto : legal.getProdutos()){

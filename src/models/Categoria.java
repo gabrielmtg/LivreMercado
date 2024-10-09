@@ -6,37 +6,31 @@ import java.util.List;
 public class Categoria {
     private String nome;
     private List<Produto> produtos;
-    private List<Categoria> subCategorias;
+    private List<Categoria> subcategorias;
 
     public Categoria(String nome){
         this.nome = nome;
         produtos = new ArrayList<Produto>();
-        subCategorias = new ArrayList<Categoria>();
+        subcategorias = new ArrayList<Categoria>();
     }
 
-    public void adicioneproduto(Produto produto){
-        if(!produtos.contains(produto)){
-            produto.setCategoria(this);
-            produtos.add(produto);
-        }
+    public void adicioneProduto(Produto produto){
+        produtos.add(produto);
     }
 
     public void adicioneSubcategoria(Categoria categoria){
-        subCategorias.add(categoria);
+        subcategorias.add(categoria);
     }
 
-    public void removaSubcategoria(Categoria subcategoria, boolean permanente) throws IllegalArgumentException{
-        if(!subCategorias.contains(subcategoria)){
-            throw new IllegalArgumentException();
-        }
+    public void removaSubcategoria(Categoria subcategoria, boolean permanente){
         if(!permanente){
-            subCategorias.remove(subcategoria);
+            subcategorias.remove(subcategoria);
         }else{
-            List<Produto> produtosSubcategoria = new ArrayList<Produto>(subcategoria.getProdutos());
-            List<Categoria> subcategoriasDaSubcategoria = new ArrayList<Categoria>(subcategoria.getSubCategorias());
-            produtos.addAll(produtosSubcategoria);
-            subCategorias.addAll(subcategoriasDaSubcategoria);
-            subCategorias.remove(subcategoria);
+            List<Produto> produtosNovos = new ArrayList<>(subcategoria.getProdutos());
+            List<Categoria> subcategoriasNovos = new ArrayList<>(subcategoria.getSubcategorias());
+            produtos.addAll(produtosNovos);
+            subcategorias.addAll(subcategoriasNovos);
+            subcategorias.remove(subcategoria);
         }
     }
 
@@ -44,11 +38,11 @@ public class Categoria {
         return nome;
     }
 
-    public List<Produto> getProdutos() {
+    public List<Produto> getProdutos(){
         return produtos;
     }
 
-    public List<Categoria> getSubCategorias() {
-        return subCategorias;
+    public List<Categoria> getSubcategorias(){
+        return subcategorias;
     }
 }

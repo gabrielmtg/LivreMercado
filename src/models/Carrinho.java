@@ -10,42 +10,21 @@ public class Carrinho {
         itens = new ArrayList<ItemCompra>();
     }
 
-    public void adicioneItem(Produto produto, Vendedor vendedor, int quantidade) throws IllegalArgumentException {
-        boolean valido = false;
-        boolean temNoEstoque = false;
-        int quantidadeNoEstoque = 0;
-
-        for (ItemEstoque item : vendedor.getEstoque().getItens()){
-            if (item.getProduto().equals(produto)) {
-                temNoEstoque = true;
-                quantidadeNoEstoque = item.getQuantidade();
-                break;
-            }
-        }
-
-        if (!temNoEstoque) throw new IllegalArgumentException("nao tem no estoque");
-
-        if (itens.size() == 0) {
-            itens.add(new ItemCompra(produto, vendedor, quantidade));
-            valido = true;
-        }
-        else {
-            for (ItemCompra item : itens){
-                if (item.getProduto().equals(produto)){
-                    if (quantidadeNoEstoque - (item.getQuantidade() + quantidade) >= 0){
-                        itens.add(new ItemCompra(produto, vendedor, quantidade));
-                        valido = true;
-                        break;
-                    }
-                }else if(quantidadeNoEstoque - quantidade >= 0) {
+    public void adicioneItem(Produto produto, Vendedor vendedor, int quantidade) throws IllegalArgumentException{
+        boolean adiconado = false;
+        int quantidaEmEstoque = vendedor.getEstoque().quantidadeEmEstoque(produto);
+        for(ItemCompra item : itens){
+            if (item.getProduto().equals(produto)){
+                if(quantidaEmEstoque - (item.getQuantidade() + quantidade) >= 0){
                     itens.add(new ItemCompra(produto, vendedor, quantidade));
-                    valido = true;
+                    adiconado = true;
                     break;
-                }
+                }else throw new IllegalArgumentException();
             }
         }
-
-        if (!valido) throw new IllegalArgumentException("numero maior que do estoque");
+        if(!adiconado || quantidaEmEstoque - quantidade >= 0){
+            itens.add(new ItemCompra(produto, vendedor, quantidade));
+        }else throw new IllegalArgumentException();
     }
 
     public void removaItem(Produto produto){

@@ -7,34 +7,7 @@ public class Estoque {
     private List<ItemEstoque> itens;
 
     public Estoque(){
-        itens = new ArrayList<>();
-    }
-
-    public void adicioneItem(Produto produto, int quantidade){
-        boolean alterado = false;
-        for (ItemEstoque item : itens){
-            if (item.getProduto().equals(produto)){
-                item.adicioneQuantidade(quantidade);
-                alterado = true;
-            }
-        }
-        if (!alterado){
-            adicioneProduto(produto, quantidade);
-        }
-    }
-
-    public void reduzaQuantidade(Produto produto, int quantidade) throws IllegalArgumentException{
-        for (ItemEstoque item : itens){
-            if (item.getProduto().equals(produto)){
-                if (quantidade > item.getQuantidade()) throw new IllegalArgumentException();
-                else item.setQuantidade(item.getQuantidade() - quantidade);
-            }
-        }
-    }
-
-    public void adicioneProduto(Produto produto, int quantidade){
-        ItemEstoque item = new ItemEstoque(produto, quantidade);
-        itens.add(item);
+        itens = new ArrayList<ItemEstoque>();
     }
 
     public int quantidadeEmEstoque(Produto produto){
@@ -46,10 +19,25 @@ public class Estoque {
         return 0;
     }
 
-    public void adicioneQuantidade(Produto produto, int quantidade){
+    public void adicioneItem(Produto produto, int quantidade){
+        boolean temNoEstoque = false;
         for(ItemEstoque item : itens){
             if(item.getProduto().equals(produto)){
-                item.setQuantidade(item.getQuantidade() + quantidade);
+                item.adicioneQuantidade(quantidade);
+                temNoEstoque = true;
+                break;
+            }
+        }
+        if(!temNoEstoque) itens.add(new ItemEstoque(produto, quantidade));
+    }
+
+    public void reduzaQuantidade(Produto produto, int quantidade) throws IllegalArgumentException{
+        for(ItemEstoque item : itens){
+            if(item.getProduto().equals(produto)){
+                if(item.getQuantidade() - quantidade >= 0){
+                    item.removaQuantidade(quantidade);
+                }else throw new IllegalArgumentException();
+                break;
             }
         }
     }
@@ -58,4 +46,3 @@ public class Estoque {
         return itens;
     }
 }
-

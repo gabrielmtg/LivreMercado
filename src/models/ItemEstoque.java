@@ -10,24 +10,21 @@ public class ItemEstoque {
     }
 
     public void adicioneQuantidade(int quantidade){
-        this.quantidade += quantidade;
+        setQuantidade(this.quantidade + quantidade);
     }
 
-    public void removaQuantidade(int quantidade) throws IllegalCallerException{
-        if(quantidade > this.quantidade){
-            throw new IllegalCallerException();
-        }
-        else{
-            this.quantidade -= quantidade;
-        }
+    public void removaQuantidade(int quantidade) throws IllegalArgumentException{
+        if(getQuantidade() - quantidade >= 0){
+            setQuantidade(getQuantidade() - quantidade);
+        }else throw new IllegalArgumentException();
     }
 
     public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int novaQuantidade) {
-        this.quantidade = novaQuantidade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Produto getProduto() {
