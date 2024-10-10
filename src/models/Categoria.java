@@ -15,7 +15,10 @@ public class Categoria {
     }
 
     public void adicioneProduto(Produto produto){
-        produtos.add(produto);
+        if(!produtos.contains(produto)){
+            produtos.add(produto);
+            produto.setCategoria(this);
+        }
     }
 
     public void adicioneSubcategoria(Categoria categoria){
