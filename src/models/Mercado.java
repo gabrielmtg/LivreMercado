@@ -3,7 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mercado {
+public final class Mercado {
+    private static Mercado mercado; //instancia padrao singleton
     private List<Categoria> categorias;
     private List<Vendedor> vendedores;
     private List<Comprador> compradores;
@@ -30,6 +31,14 @@ public class Mercado {
         if(!compradores.contains(comprador)){
             compradores.add(comprador);
         }
+    }
+
+    //getter do padrao singleton
+    public static Mercado getMercado() {
+        if( mercado == null){
+            mercado = new Mercado();
+        }
+        return mercado;
     }
 
     public List<Categoria> getCategorias() {

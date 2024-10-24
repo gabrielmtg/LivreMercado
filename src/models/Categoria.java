@@ -16,7 +16,12 @@ public class Categoria {
 
     public void adicioneProduto(Produto produto){
         if(!produtos.contains(produto)){
-            produtos.add(produto);
+            if(produto.getCategoria() != this){
+                produtos.add(produto);
+                produto.getCategoria().produtos.remove(produto);
+            }else{
+                produtos.add(produto);
+            }
             produto.setCategoria(this);
         }
     }

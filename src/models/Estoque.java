@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Estoque {
@@ -40,6 +41,16 @@ public class Estoque {
                 break;
             }
         }
+    }
+
+    //metodo para usar no observer
+    public ItemEstoque getItemDoestoque(Produto produto) throws IllegalArgumentException{
+        for(ItemEstoque item : itens){
+            if(item.getProduto().equals(produto)){
+                return item;
+            }else throw new IllegalArgumentException("este produto nao esta no estoque");
+        }
+        return null;
     }
 
     public List<ItemEstoque> getItens() {

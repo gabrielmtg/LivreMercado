@@ -1,4 +1,31 @@
+/**
+ * implementar:
+ *
+ * formas de pagamento
+ *      -pedidos tem que ser pagos pelo cliente ao comprador
+ *          -transferencia, pix, mercado pago, cartao, boleto (fazer de forma que possam ser add novas formas de pagamento) usar factory. --> feito mais ou menos
+ *
+ * historico de pedidos
+ *
+ * pesquisa por produtos similares
+ *
+ * ordenar produtos por preço, categotia, vendedor, (mais vendidios) (usar comparator [metodo do java])
+ *
+ * avisar comprador quando um produto de interesse voltar ao estoque ---> FEITO!!
+ *
+ * a efetuacao da compra passa por diferentes etapas
+ *      -etapas: avaliando pagamento -> em preparaçao -> em transito -> entrege -> finalizado/perdido/sobReclamaçao
+ *
+ * cliente pode desfazer a inclusao ou exclusao de itens no carrinho
+ *
+ * vendedor pode desfazer acoes sobre o carrinho
+ */
+
+
 import models.*;
+
+import java.util.Collections;
+
 
 class Main{
     public static void main(String[] args){
@@ -73,6 +100,14 @@ class Main{
         }
 
         //legal.removaSubcategoria(abacaxi, true);
+
+        //teste Observer
+
+        comprador.adicionarProdutoDeInteresse(paoDeQueijo, vendedor, 6);
+        vendedor.getEstoque().getItemDoestoque(paoDeQueijo).adicioneQuantidade(8);
+
+        //teste pagamento
+        Pagamento pagamento = PagamentoFactory.novoPagamento(TipoPagamento.DINHEIRO);
 
     }
 }
