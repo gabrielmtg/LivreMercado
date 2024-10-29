@@ -2,8 +2,7 @@ package models;
 
 public class PagamentoTransferencia implements Pagamento{
     @Override
-    public void pagamento(double valor) {
-
-        System.out.println("pagamento efetuado no transferencia");
+    public void executarPagamento(double valor) {
+        System.out.println("pagamento efetuado no transferencia" + valor);
     }
 }

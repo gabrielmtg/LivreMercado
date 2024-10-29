@@ -1,8 +1,9 @@
 package models;
 
 public class PagamentoBoleto implements Pagamento{
+
     @Override
-    public void pagamento(double valor) {
-        System.out.println("pagamento efetuado no Boleto");
+    public void executarPagamento(double valor) {
+        System.out.println("pagamentgo boleto " + valor);
     }
 }

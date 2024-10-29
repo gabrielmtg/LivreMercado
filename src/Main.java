@@ -3,7 +3,7 @@
  *
  * formas de pagamento
  *      -pedidos tem que ser pagos pelo cliente ao comprador
- *          -transferencia, pix, mercado pago, cartao, boleto (fazer de forma que possam ser add novas formas de pagamento) usar factory. --> feito mais ou menos
+ *          -transferencia, pix, mercado pago, cartao, boleto (fazer de forma que possam ser add novas formas de pagamento) usar strategy. --> feito mais ou menos
  *
  * historico de pedidos
  *
@@ -105,9 +105,10 @@ class Main{
 
         comprador.adicionarProdutoDeInteresse(paoDeQueijo, vendedor, 6);
         vendedor.getEstoque().getItemDoestoque(paoDeQueijo).adicioneQuantidade(8);
+        System.out.println();
 
         //teste pagamento
-        Pagamento pagamento = PagamentoFactory.novoPagamento(TipoPagamento.DINHEIRO);
-
+        PagamentoNavigator pagamento = new PagamentoNavigator(new PagamentoPix());
+        pagamento.executarPagamento(420.69);
     }
 }
