@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Carrinho {
     private List<ItemCompra> itens;
+    private CareTakerCarrinho careTaker;
 
     public Carrinho(){
         itens = new ArrayList<ItemCompra>();
+        careTaker = new CareTakerCarrinho();
     }
 
     public void adicioneItem(Produto produto, Vendedor vendedor, int quantidade) throws IllegalArgumentException{
@@ -25,6 +27,8 @@ public class Carrinho {
         if(!adiconado || quantidaEmEstoque - quantidade >= 0){
             itens.add(new ItemCompra(produto, vendedor, quantidade));
         }else throw new IllegalArgumentException();
+
+        careTaker.saveState(new MementoCarrinho(itens));
     }
 
     public void removaItem(Produto produto){
@@ -34,6 +38,17 @@ public class Carrinho {
                 break;
             }
         }
+        careTaker.saveState(new MementoCarrinho(itens));
+    }
+
+    public void desfazer(){
+        itens.clear();
+        itens = careTaker.desfazer();
+    }
+
+    public void refazer(){
+        itens.clear();
+        itens = careTaker.refazer();
     }
 
     public List<ItemCompra> getItens() {

@@ -2,29 +2,28 @@
  * implementar:
  *
  * formas de pagamento
- *      -pedidos tem que ser pagos pelo cliente ao comprador
+ *      -pedidos tem que ser pagos pelo cliente ao comprador -> usar mediator com o mercado
  *          -transferencia, pix, mercado pago, cartao, boleto (fazer de forma que possam ser add novas formas de pagamento) usar strategy. --> feito mais ou menos
  *
- * historico de pedidos
+ * historico de pedidos -> usar memento
  *
- * pesquisa por produtos similares
+ * pesquisa por produtos similares -> usar Iterator
  *
  * ordenar produtos por preço, categotia, vendedor, (mais vendidios) (usar comparator [metodo do java])
  *
  * avisar comprador quando um produto de interesse voltar ao estoque ---> FEITO!!
  *
- * a efetuacao da compra passa por diferentes etapas
+ * a efetuacao da compra passa por diferentes etapas -> usar state
+ *
  *      -etapas: avaliando pagamento -> em preparaçao -> em transito -> entrege -> finalizado/perdido/sobReclamaçao
  *
- * cliente pode desfazer a inclusao ou exclusao de itens no carrinho
+ * cliente pode desfazer a inclusao ou exclusao de itens no carrinho -> usar memenro
  *
- * vendedor pode desfazer acoes sobre o carrinho
+ * vendedor pode desfazer acoes sobre o carrinho -> usar memento
  */
 
 
 import models.*;
-
-import java.util.Collections;
 
 
 class Main{

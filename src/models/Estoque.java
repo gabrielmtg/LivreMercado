@@ -43,7 +43,7 @@ public class Estoque {
         }
     }
 
-    //metodo para usar no observer
+    //metodo para usar no observer (notificador)
     public ItemEstoque getItemDoestoque(Produto produto) throws IllegalArgumentException{
         for(ItemEstoque item : itens){
             if(item.getProduto().equals(produto)){
