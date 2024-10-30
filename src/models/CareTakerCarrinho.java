@@ -19,11 +19,11 @@ public class CareTakerCarrinho {
 
     public List<ItemCompra> desfazer(){
         if(historico.size() > 1 && !historico.isEmpty()){
-            MementoCarrinho itemAtual = historico.get(-1);
+            MementoCarrinho itemAtual = historico.getLast();
             historicoApagado.add(itemAtual);
-            historico.remove(-1);
-            return historico.get(-1).getItens();
-        }else return historico.get(-1).getItens();
+            historico.remove(itemAtual);
+            return historico.getLast().getItens();
+        }else return historico.getLast().getItens();
     }
 
     public List<ItemCompra> refazer(){
@@ -31,7 +31,7 @@ public class CareTakerCarrinho {
             MementoCarrinho retorna = historicoApagado.get(0);
             historicoApagado.remove(retorna);
             return retorna.getItens();
-        }else return historico.get(-1).getItens();
+        }else return historico.getLast().getItens();
     }
 
     public void apagaHistoricoApagado(){

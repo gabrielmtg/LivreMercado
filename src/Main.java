@@ -37,18 +37,23 @@ class Main{
 
         vendedor.adicioneProdutoAoEstoque(paoDeQueijo, 10);
         comprador.adicioneProdutoAoCarrinho(paoDeQueijo, vendedor, 5);
-        //comprador.adicioneAoCarrinho(paoDeQueijo, vendedor, 3);
-        //comprador.removerDoCarrinho(paoDeQueijo);
+        comprador.adicioneProdutoAoCarrinho(paoDeQueijo, vendedor, 3);
+        comprador.getCarrinho().desfazer();
         vendedor.adicioneProdutoAoEstoque(coco, 5);
         comprador.adicioneProdutoAoCarrinho(coco, vendedor, 4);
 
+        comprador.getCarrinho().desfazer();
+        comprador.getCarrinho().refazer();
+        comprador.getCarrinho().refazer();
+
         // testando adicioneProdutoAoCarrinho()
-        System.out.println("testando adicioneProdutoAoCarrinho()\n");
+        System.out.println("\ntestando adicioneProdutoAoCarrinho()\n");
         for(ItemCompra item : comprador.getCarrinho().getItens()){
             System.out.println(item.getProduto().getNome());
             System.out.println(item.getQuantidade());
         }
 
+        /*
         comprador.efetuarCompra();
 
         //testando efetuarCompra()
@@ -109,5 +114,7 @@ class Main{
         //teste pagamento
         PagamentoNavigator pagamento = new PagamentoNavigator(new PagamentoPix());
         pagamento.executarPagamento(420.69);
+
+         */
     }
 }

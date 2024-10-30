@@ -24,9 +24,10 @@ public class Carrinho {
                 }else throw new IllegalArgumentException();
             }
         }
-        if(!adiconado || quantidaEmEstoque - quantidade >= 0){
-            itens.add(new ItemCompra(produto, vendedor, quantidade));
-        }else throw new IllegalArgumentException();
+        if(!adiconado) {
+            if (quantidaEmEstoque - quantidade >= 0) itens.add(new ItemCompra(produto, vendedor, quantidade));
+            else throw new IllegalArgumentException();
+        }
 
         careTaker.saveState(new MementoCarrinho(itens));
     }
@@ -43,12 +44,12 @@ public class Carrinho {
 
     public void desfazer(){
         itens.clear();
-        itens = careTaker.desfazer();
+        itens.addAll(careTaker.desfazer());
     }
 
     public void refazer(){
         itens.clear();
-        itens = careTaker.refazer();
+        itens.addAll(careTaker.refazer());
     }
 
     public List<ItemCompra> getItens() {
