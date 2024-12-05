@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Comprador extends Pessoa implements Observer{
     private Carrinho carrinho;
+    private List<ItemCompra> itensComprados;
     private List<String> notificacoes;
+    private CaretakerHistoricoDeCompras caretaker;
 
     public Comprador(String nome){
         super(nome);
         carrinho = new Carrinho();
         notificacoes = new ArrayList<String>();
+        itensComprados = new ArrayList<>();
+        caretaker = new CaretakerHistoricoDeCompras();
     }
 
     public void adicioneProdutoAoCarrinho(Produto produto, Vendedor vendedor, int quantidade){
@@ -23,9 +27,11 @@ public class Comprador extends Pessoa implements Observer{
             Vendedor vendedor = item.getVendedor();
             try{
                 vendedor.getEstoque().reduzaQuantidade(item.getProduto(), item.getQuantidade());
+                itensComprados.add(item);
                 carrinho.removaItem(item.getProduto());
             }catch (IllegalArgumentException e){}
         }
+        adicionaAoHistorico(itensComprados);
     }
 
     public Carrinho getCarrinho(){
@@ -41,5 +47,14 @@ public class Comprador extends Pessoa implements Observer{
     //metodo para o comprador pedir para ser notificado quando chegar novos produtos de interesse
     public void adicionarProdutoDeInteresse(Produto produto, Vendedor vendedor, int quantidade){
         vendedor.getEstoque().getItemDoestoque(produto).addObserver(this, quantidade);
+    }
+
+    public void adicionaAoHistorico(List<ItemCompra> itens){
+        caretaker.saveState(new MementoHistoricoDeCompras(itens));
+        itens.clear();
+    }
+
+    public List<MementoHistoricoDeCompras> getHistorico(){
+        return caretaker.getHistoricoDeCompras();
     }
 }
