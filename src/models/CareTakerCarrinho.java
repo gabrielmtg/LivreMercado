@@ -3,6 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+faz e desfaz ações no carrinho
+ */
+
 public class CareTakerCarrinho {
     private List<MementoCarrinho> historico;
     private List<MementoCarrinho> historicoApagado;

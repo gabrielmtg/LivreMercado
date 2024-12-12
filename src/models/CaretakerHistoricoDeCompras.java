@@ -3,6 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+historico de compras do carrinho
+ */
+
 public class CaretakerHistoricoDeCompras {
     private List<MementoHistoricoDeCompras> historicoDeCompras;
 
