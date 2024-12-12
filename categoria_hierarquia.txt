@@ -1,0 +1,28 @@
+CATEGORIA;0;Raiz
+PRODUTO;Produto Raiz 1;Modelo Produto Raiz 1;Marca Produto Raiz 1;100.0;Raiz
+PRODUTO;Produto Raiz 2;Modelo Produto Raiz 2;Marca Produto Raiz 2;200.0;Raiz
+PRODUTO;Produto Raiz 3;Modelo Produto Raiz 3;Marca Produto Raiz 3;300.0;Raiz
+CATEGORIA;1;Subcategoria 1
+PRODUTO;Produto Sub1 1;Modelo Produto Sub1 1;Marca Produto Sub1 1;100.0;Subcategoria 1
+PRODUTO;Produto Sub1 2;Modelo Produto Sub1 2;Marca Produto Sub1 2;200.0;Subcategoria 1
+PRODUTO;Produto Sub1 3;Modelo Produto Sub1 3;Marca Produto Sub1 3;300.0;Subcategoria 1
+CATEGORIA;2;Subcategoria 1.1
+PRODUTO;Produto Sub1_1 1;Modelo Produto Sub1_1 1;Marca Produto Sub1_1 1;100.0;Subcategoria 1.1
+PRODUTO;Produto Sub1_1 2;Modelo Produto Sub1_1 2;Marca Produto Sub1_1 2;200.0;Subcategoria 1.1
+PRODUTO;Produto Sub1_1 3;Modelo Produto Sub1_1 3;Marca Produto Sub1_1 3;300.0;Subcategoria 1.1
+CATEGORIA;2;Subcategoria 1.2
+PRODUTO;Produto Sub1_2 1;Modelo Produto Sub1_2 1;Marca Produto Sub1_2 1;100.0;Subcategoria 1.2
+PRODUTO;Produto Sub1_2 2;Modelo Produto Sub1_2 2;Marca Produto Sub1_2 2;200.0;Subcategoria 1.2
+PRODUTO;Produto Sub1_2 3;Modelo Produto Sub1_2 3;Marca Produto Sub1_2 3;300.0;Subcategoria 1.2
+CATEGORIA;1;Subcategoria 2
+PRODUTO;Produto Sub2 1;Modelo Produto Sub2 1;Marca Produto Sub2 1;100.0;Subcategoria 2
+PRODUTO;Produto Sub2 2;Modelo Produto Sub2 2;Marca Produto Sub2 2;200.0;Subcategoria 2
+PRODUTO;Produto Sub2 3;Modelo Produto Sub2 3;Marca Produto Sub2 3;300.0;Subcategoria 2
+CATEGORIA;2;Subcategoria 2.1
+PRODUTO;Produto Sub2_1 1;Modelo Produto Sub2_1 1;Marca Produto Sub2_1 1;100.0;Subcategoria 2.1
+PRODUTO;Produto Sub2_1 2;Modelo Produto Sub2_1 2;Marca Produto Sub2_1 2;200.0;Subcategoria 2.1
+PRODUTO;Produto Sub2_1 3;Modelo Produto Sub2_1 3;Marca Produto Sub2_1 3;300.0;Subcategoria 2.1
+CATEGORIA;2;Subcategoria 2.2
+PRODUTO;Produto Sub2_2 1;Modelo Produto Sub2_2 1;Marca Produto Sub2_2 1;100.0;Subcategoria 2.2
+PRODUTO;Produto Sub2_2 2;Modelo Produto Sub2_2 2;Marca Produto Sub2_2 2;200.0;Subcategoria 2.2
+PRODUTO;Produto Sub2_2 3;Modelo Produto Sub2_2 3;Marca Produto Sub2_2 3;300.0;Subcategoria 2.2

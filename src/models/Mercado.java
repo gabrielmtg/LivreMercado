@@ -41,6 +41,13 @@ public final class Mercado {
         return mercado;
     }
 
+    public Categoria pegarCategoria(String nomeCategoria){
+        for (Categoria categoria : categorias){
+            if (categoria.getNome().equals(nomeCategoria)) return categoria;
+        }
+        return null;
+    }
+
     public List<Categoria> getCategorias() {
         return categorias;
     }

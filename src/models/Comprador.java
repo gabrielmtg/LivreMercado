@@ -15,6 +15,7 @@ public class Comprador extends Pessoa implements Observer{
         notificacoes = new ArrayList<String>();
         itensComprados = new ArrayList<>();
         caretaker = new CaretakerHistoricoDeCompras();
+        Mercado.getMercado().adicioneComprador(this);
     }
 
     public void adicioneProdutoAoCarrinho(Produto produto, Vendedor vendedor, int quantidade){
